@@ -80,9 +80,9 @@ def main():
 class Net(nn.Module):
     def __init__(self, batch_size):
         super().__init__()
-        self.conv1 = nn.Conv2d(in_channels=1,out_channels=4, kernel_size=5, padding=0)
+        self.conv1 = nn.Conv2d(in_channels=1,out_channels=4, kernel_size=5, padding=2)
         self.relu1 = nn.LeakyReLU(negative_slope=0.01, inplace=False)
-        self.conv2 = nn.Conv2d(in_channels=4,out_channels=8, kernel_size=5, padding=0)
+        self.conv2 = nn.Conv2d(in_channels=4,out_channels=8, kernel_size=5, padding=2)
         self.relu2 = nn.LeakyReLU(negative_slope=0.01, inplace=False)
         self.pool = nn.MaxPool2d(kernel_size=2)
         self.lin = nn.Linear(in_features=8*batch_size, out_features=10)
@@ -102,12 +102,12 @@ class ConvNet(nn.Module):
         super(ConvNet, self).__init__()
         self.layer1 = nn.Sequential(
             nn.Conv2d(1, 16, kernel_size=5, stride=1, padding=2),
-            nn.BatchNorm2d(16),
+            #nn.BatchNorm2d(16),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
         self.layer2 = nn.Sequential(
             nn.Conv2d(16, 32, kernel_size=5, stride=1, padding=2),
-            nn.BatchNorm2d(32),
+            # nn.BatchNorm2d(32),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
         self.fc = nn.Linear(7*7*32, num_classes)
