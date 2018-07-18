@@ -76,7 +76,7 @@ def main():
                 print ('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}'
                        .format(epoch+1, num_epochs, i+1, total_step, loss.item()))
 
-class Net(nn.module):
+class Net(nn.Module):
     def __init__(self):
         self.conv1 = nn.Conv2d(in_channels=1,out_channels=4, kernel_size=5, padding=2)
         self.relu1 = nn.LeakyReLU(negative_slope=0.01, inplace=False)
