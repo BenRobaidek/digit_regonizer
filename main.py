@@ -93,6 +93,7 @@ class Net(nn.Module):
         y = self.conv2(y)
         y = self.relu2(y)
         y = self.pool(y)
+        y = y.reshape(y.size(0), -1)
         print('shape(y)', np.shape(y))
         return self.lin(y)
 
