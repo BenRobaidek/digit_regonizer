@@ -5,7 +5,6 @@ from sklearn import svm
 
 import sys
 sys.path.append('./data/')
-import model
 import torch
 from torch import autograd, nn
 import torch.nn.functional as F
@@ -52,7 +51,7 @@ def main():
                                           batch_size=8,
                                           shuffle=False)
 
-    m = Net()
+    model = Net()
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adamax(model.parameters())
 
@@ -64,7 +63,7 @@ def main():
             labels = labels.to(device)
 
             # Forward pass
-            outputs = m(images)
+            outputs = model(images)
             loss = criterion(outputs, labels)
 
             # Backward and optimize
