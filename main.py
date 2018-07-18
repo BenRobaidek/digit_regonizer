@@ -42,11 +42,11 @@ def main():
 
     # Data loader
     train_loader = torch.utils.data.DataLoader(dataset=train_dataset,
-                                           batch_size=batch_size,
+                                           batch_size=8,
                                            shuffle=True)
 
     test_loader = torch.utils.data.DataLoader(dataset=test_dataset,
-                                          batch_size=batch_size,
+                                          batch_size=8,
                                           shuffle=False)
 
     model = m.Net()
