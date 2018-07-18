@@ -57,6 +57,7 @@ def main():
 
     # Train the model
     total_step = len(train_loader)
+    num_epochs = 2
     for epoch in range(num_epochs):
         for i, (images, labels) in enumerate(train_loader):
             images = images.to(device)
