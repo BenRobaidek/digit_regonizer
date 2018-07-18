@@ -5,7 +5,7 @@ from sklearn import svm
 
 import sys
 sys.path.append('./data/')
-import model as m
+import model
 import torch
 import torchvision
 import torchvision.transforms as transforms
@@ -13,6 +13,7 @@ import torchvision.transforms as transforms
 #matplotlib inline
 
 def main():
+    """
     labeled_images = pd.read_csv('./data/all/train.csv')
     images = labeled_images.iloc[0:5000,1:]
     labels = labeled_images.iloc[0:5000,:1]
@@ -21,7 +22,7 @@ def main():
     test_images[test_images>0]=1
     train_images[train_images>0]=1
 
-    """
+
     # SVM
     clf = svm.SVC()
     print(clf.fit(train_images, train_labels.values.ravel()))
@@ -49,7 +50,7 @@ def main():
                                           batch_size=8,
                                           shuffle=False)
 
-    model = m.Net()
+    m = model.Net()
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adamax(model.parameters())
 
@@ -61,7 +62,7 @@ def main():
             labels = labels.to(device)
 
             # Forward pass
-            outputs = model(images)
+            outputs = m(images)
             loss = criterion(outputs, labels)
 
             # Backward and optimize
