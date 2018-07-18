@@ -6,6 +6,7 @@ from sklearn import svm
 import sys
 sys.path.append('./data/')
 import model as m
+import torch
 import torchvision
 import torchvision.transforms as transforms
 
