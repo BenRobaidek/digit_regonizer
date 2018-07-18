@@ -78,6 +78,7 @@ def main():
 
 class Net(nn.Module):
     def __init__(self):
+        super().__init__()
         self.conv1 = nn.Conv2d(in_channels=1,out_channels=4, kernel_size=5, padding=2)
         self.relu1 = nn.LeakyReLU(negative_slope=0.01, inplace=False)
         self.conv2 = nn.Conv2d(in_channels=4,out_channels=8, kernel_size=5, padding=2)
